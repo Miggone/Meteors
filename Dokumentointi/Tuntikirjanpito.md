@@ -1,0 +1,1 @@
+29.10		noin tunti 		Ensimm‰isen deadlinen hommat (kansioiden/projektin luonti ja konffailu + aihem‰‰rittely)
