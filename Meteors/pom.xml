@@ -36,17 +36,17 @@
             <version>2.7</version>
         </plugin>
         <plugin>
-                <groupId>Meteors</groupId>
+                <groupId>org.pitest</groupId>
     <artifactId>pitest-maven</artifactId>
     <version>1.1.4</version>
     <configuration>
         <targetClasses>
-            <param>meteors.nappulat.*</param>
             <param>meteors.kentta.*</param>
+            <param>meteors.nappulat.*</param>
         </targetClasses>
         <targetTests>
-            <param>meteors.nappulat.*</param>
-            <param>meteors.kentta.*</param>          
+            <param>meteors.kentta.*</param>
+            <param>meteors.nappulat.*</param>          
         </targetTests>
     </configuration>
             </plugin>
