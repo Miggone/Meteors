@@ -7,21 +7,43 @@ package meteors.nappulat;
  */
 
 /**
- *
+ * Luokka sisältää pelinappuloille yleiset metodit paikannusta varten
  * @author Miggone
  */
 public class Pelinappula {
-    public int xkoordinaatti;
-    public int ykoordinaatti;
-    
+
+    private int xkoordinaatti;
+    private int ykoordinaatti;
+    /**
+     * 
+     * @param x ohjelman määrittämä x-koordinaatti
+     * @param y ohjelman määrittämä y-koordinaatti
+     */
     public Pelinappula(int x, int y) {
         xkoordinaatti = x;
         ykoordinaatti = y;
     }
+
+    /**
+     *
+     * @return palauttaa nappulan x-koordinaatin
+     */
     public int haeX() {
         return xkoordinaatti;
     }
+
+    /**
+     *
+     * @return palauttaa nappulan y-koordinaatin
+     */
     public int haeY() {
         return ykoordinaatti;
+    }
+    /**
+     * asettaa uuden y-koordinaatin arvon
+     * @param haluttu uusi y-koordinaatin arvo
+     */
+    public void setY(int haluttu) {
+        ykoordinaatti = haluttu;
     }
 }

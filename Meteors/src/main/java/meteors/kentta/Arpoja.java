@@ -8,29 +8,60 @@ import java.util.Random;
 import java.util.ArrayList;
 import meteors.kayttoliittyma.Kayttoliittyma;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 /**
- *
+ * Luokka sisältää metodit pelikentän sattumanvaraiseen täyttämiseen
  * @author Miggone
  */
 public class Arpoja {
     List<Integer> tiheys;
     List<Integer> koordinaatit;
-    Random random;
+    private Random random;
+    private Kentta taytettava;
     
-    public Arpoja() {
-        tiheys = new ArrayList<Integer>();
+    /**
+     *
+     * @param taytettavaKentta käyttäjän antama kenttä
+     */
+    public Arpoja(Kentta taytettavaKentta) {
+        tiheys = new ArrayList<Integer>();       
+        random = new Random();    
+        taytettava = taytettavaKentta;
         koordinaatit = new ArrayList<Integer>();
-        random = new Random();     
     }
-    public void arvoTiheys(Kentta taytettavaKentta) {
-        int rivit = taytettavaKentta.haeKorkeus() - 10;
+
+    /**
+     * Metodi arpoo meteoriittien tiheyden per pelikentän rivi
+     * eli kuinka monta meteoriittia kullekin riville tulee
+     */
+    public void arvoTiheys() {
+        int rivit = taytettava.haeKorkeus() - 10;
         while (rivit > 0) {
             tiheys.add(2 + random.nextInt(3));
             rivit--;
         }
     }
+
+    /**
+     * Metodi arpoo pelikentän riveille tulevien meteoriittien koordinaatit
+     * 
+     */
     public void arvoKoordinaatit() {
-        
+        int i = 10;
+        while (i < taytettava.haeKorkeus()) {
+            int a = 0;
+            while (a < tiheys.get(i - 10)) {
+                int xkoordinaatti = 1 + random.nextInt(9);
+                int koordinaatti = i * 10 + xkoordinaatti;
+                if (!koordinaatit.contains(koordinaatti)) {  
+                    koordinaatit.add(koordinaatti);
+                    
+                    a++;
+                }
+            }
+            i++;
+        }
     }
             
 }

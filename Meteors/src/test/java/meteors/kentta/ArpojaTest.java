@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 
+
 /**
  *
  * @author Miggone
@@ -44,42 +45,114 @@ public class ArpojaTest {
     @Test
     public void tiheydenArpominenArpooKaikilleRiveille() {
         Kentta kentta = new Kentta(200);
-        Arpoja arpoja = new Arpoja();
-        arpoja.arvoTiheys(kentta);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
         
         int rivit = arpoja.tiheys.size();
         
-        assertEquals(rivit, 190);
+        assertEquals(190, rivit);
     }
     @Test
     public void tiheysMinKaksi() {
         Kentta kentta = new Kentta(200);
-        Arpoja arpoja = new Arpoja();
-        arpoja.arvoTiheys(kentta);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
         
-        int pienin = 2;
+        int pienin = 3;
         int i = 0;
         while (i < arpoja.tiheys.size()) {
-            pienin = Math.min(arpoja.tiheys.get(i), 2);
+            pienin = Math.min(arpoja.tiheys.get(i), pienin);
             i++;
         }
         
-        assertEquals(pienin, 2);
+        assertEquals(2, pienin);
     }
     @Test
     public void tiheysMaxNelja() {
         Kentta kentta = new Kentta(200);
-        Arpoja arpoja = new Arpoja();
-        arpoja.arvoTiheys(kentta);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
         
-        int isoin = 4;
+        int isoin = 1;
         int i = 0;
         while (i < arpoja.tiheys.size()) {
-            isoin = Math.max(arpoja.tiheys.get(i), 4);
+            isoin = Math.max(arpoja.tiheys.get(i), isoin);
             i++;
         }
         
-        assertEquals(isoin, 4);
+        assertEquals(4, isoin);
+    }
+    @Test
+    public void koordinaattejaOikeaMaara() {
+        Kentta kentta = new Kentta(200);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
+        arpoja.arvoKoordinaatit();
+        
+        int koordinaattejaPitaisiOlla = 0;
+        int i = 0;
+        while (i < arpoja.tiheys.size()) {
+            koordinaattejaPitaisiOlla = koordinaattejaPitaisiOlla + arpoja.tiheys.get(i);
+            i++;
+        }
+        int b = arpoja.koordinaatit.size();
+        
+        
+        assertEquals(koordinaattejaPitaisiOlla, b);
+    }
+    @Test
+    public void xKoordinaatitMinYksi() {
+        Kentta kentta = new Kentta(200);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
+        arpoja.arvoKoordinaatit();
+      
+        int pienin = 2;
+        int a = 10;
+        int i = 0;
+        
+        while (a - 10 < arpoja.tiheys.size()) {
+            
+            while (a * 10 + 10 > arpoja.koordinaatit.get(i)) {
+                int xkoordinaatti = arpoja.koordinaatit.get(i) - 10 * a;
+                pienin = Math.min(xkoordinaatti, pienin);
+                i++;
+                if (i == arpoja.koordinaatit.size()) {
+                    break;
+                }
+            }
+            a++;
+     }
+      
+      assertEquals(1, pienin);
+       
+    }
+    @Test
+    public void xKoordinaatitMaxYhdeksan() {
+        Kentta kentta = new Kentta(200);
+        Arpoja arpoja = new Arpoja(kentta);
+        arpoja.arvoTiheys();
+        arpoja.arvoKoordinaatit();
+      
+        int isoin = 2;
+        int a = 10;
+        int i = 0;
+        
+        while (a - 10 < arpoja.tiheys.size()) {
+            
+            while (a * 10 + 10 > arpoja.koordinaatit.get(i)) {
+                int xkoordinaatti = arpoja.koordinaatit.get(i) - 10 * a;
+                isoin = Math.max(xkoordinaatti, isoin);
+                i++;
+                if (i == arpoja.koordinaatit.size()) {
+                    break;
+                }
+            }
+            a++;
+     }
+      
+      assertEquals(9, isoin);
+       
     }
 
     // TODO add test methods here.

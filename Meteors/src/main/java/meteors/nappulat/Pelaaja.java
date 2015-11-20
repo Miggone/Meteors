@@ -10,21 +10,35 @@ import meteors.nappulat.Pelinappula;
  */
 
 /**
- *
+ * Luokka sisältää pelaaja-olion tarvitsemat metodit
  * @author Miggone
  */
 public class Pelaaja extends Pelinappula {
+
+    /**
+     *
+     * @param x ohjelman määrittämä aloituskoordinaatti
+     * @param y ohjelman määrittämä aloituskoordinaatti
+     */
     public Pelaaja(int x, int y) {
         super(x, y);
     }
+
+    /**
+     * Metodi liikuttaa pelaajaa vasemmalle, jollei pelaaja jo ole kentän reunalla
+     */
     public void liikuVasen() {
         if (haeY() > 2) {
-            ykoordinaatti--;
+            setY(haeY() - 1);
         }
     }
+
+    /**
+     * Metodi liikuttaa pelaajaa oikealle, jollei pelaaja jo ole kentän reunalla
+     */
     public void liikuOikea() {
         if (haeY() < 9) {
-            ykoordinaatti++;
+            setY(haeY() + 1);
         }
     }
 }
